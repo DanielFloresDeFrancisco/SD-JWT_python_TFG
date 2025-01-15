@@ -1,3 +1,5 @@
+import base64
+
 class Header():
 
     def __init__(self, alg, typ):
@@ -36,5 +38,3 @@ header = Header("HS256", "JWT")
 payload = Payload(12,13,"Dani","Lumi", [])
 signature = Signature("jknsfvnvdvn4gnir5")
 sdjwt = SD_JWT(header, payload, signature)
-
-print(sdjwt.header.alg + sdjwt.payload.sub)

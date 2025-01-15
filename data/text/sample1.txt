@@ -1,0 +1,5 @@
+name: Daniel
+age: 22
+street: Avd de la Borbolla
+location: Cordoba
+dni: 45362719F
