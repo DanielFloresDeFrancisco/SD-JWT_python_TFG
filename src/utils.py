@@ -54,7 +54,7 @@ def create_signature(enc_header, enc_payload):
       
     signature_base64url = base64.urlsafe_b64encode(signature).rstrip(b'=').decode('utf-8')
     
-    return signature_base64url
+    return signature_base64url, secret_key
 
 def build_SDJWT(draft_sdjwt):
     return draft_sdjwt.header + '.' + draft_sdjwt.payload + '.' + draft_sdjwt.signature
@@ -74,14 +74,11 @@ def parse_data_to_SDJWT(filepath):
 
     enc_header = encode64_header(header)
     enc_payload = encode64_payload(payload)
-    signature = create_signature(enc_header, enc_payload)
+    signature, secret_key = create_signature(enc_header, enc_payload)
     draft_sdjwt = sdjwt.SD_JWT(enc_header, enc_payload, signature)
     sd_jwt = build_SDJWT(draft_sdjwt)
-    return sd_jwt
+    return sd_jwt, secret_key
        
 
 def parse_SDJWT_to_JSON(sd_jwt):
     pass
-
-jwt = parse_data_to_SDJWT("data/text/sample1.txt")
-print(jwt)

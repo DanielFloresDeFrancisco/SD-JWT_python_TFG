@@ -7,8 +7,8 @@ alg = '"HS256"'
 typ = '"JWT"'
 
 # PAYLOAD
-aud = '"Javier"'
-sub = '"Daniel"'
+aud = '"Verifier"'
+sub = '"Holder"'
 
 
 def generate_random256_bit_key():
