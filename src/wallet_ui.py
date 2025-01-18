@@ -158,7 +158,7 @@ class Token_Info_UI(QWidget):
 def main():
     app = QApplication(sys.argv)
     window = MainWindow()
-    window.show() #When creating a window, is hide by default
+    window.show()
     sys.exit(app.exec_())
 
 
