@@ -8,6 +8,8 @@ class MainWindow(QMainWindow):
 
         self.setGeometry(650, 250, 400, 400)
 
+        self.label_title = QLabel("MyWallet", self)
+
         self.label_name = QLabel("Name:", self)
         self.label_surname = QLabel("Surname:", self)
         self.label_street = QLabel("Street:", self)
@@ -26,6 +28,9 @@ class MainWindow(QMainWindow):
 
     
     def initUI(self):
+
+        self.label_title.setGeometry(120, 25, 200, 50)
+        self.label_title.setStyleSheet("font-size: 40px;")
 
         self.label_name.setGeometry(20, 100, 170, 40)
         self.label_surname.setGeometry(20, 150, 170, 40)
@@ -62,10 +67,12 @@ class MainWindow(QMainWindow):
 
 
     def handling_data(self):
+        f = open("data/text/preuba.txt", "w")
         for label_widget, text_widget in zip(self.label_list, self.text_list):
             label = label_widget.text()
             text = text_widget.text()
-            print(f"Credential: {label} {text}")
+            f.write(f"{label} {text}\n")
+        f.close()
 
 
 def main():
